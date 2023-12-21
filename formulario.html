@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CHASIDE COTECNOVA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="funciones.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body onload="reiniciarpregunta()">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <img class="bi me-2" width="40" height="40" src="https://www.ceim.edu.co/wp-content/uploads/2015/03/cotecnova.png">
+      <span class="fs-4">COTECNOVA</span>
+    </a>
+  </header>
+         <div class="container">
+            <h2 align="center">TEST VOCACIONAL "CHASIDE"</h2>
+            <h3 align="center">Bienvenido a descubrir tu vocación.</h3>
+            <h5 align="center"><p>A continuacion te mostrados actividades sobres las cuales puedes haber tenido alguna experiencia personal. A medida que leas cada cuestion piensa en si te gustaria o no.</p></h5>
+            <h5 align="center"><p>Por favor se honesto en todas tus respuestas, ya que de ello dependerán los resultados.</p></h5>
+            <div>
+              <h5 align="center">Al diligenciar este formulario reconoce que entiende y acepta nuestra politica de tratamiento de datos personales, que puede conocer en nuestro sitio web www.cotecnova.edu.co <a href="https://www.cotecnova.edu.co/index.php/politica-de-privacidad/" target="_blank">Ver Politica de tratamiento de datos.</a></h5>
+            </div>
+         </div>
+      <form id="formularioencuesta" autocomplete="off" name="form" action="enviardatos.php" method="POST" onsubmit="return validarformulario();">
+           <br>
+           <div class="container">
+            <div class="form-floating ">
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo">
+              <label for="floatingInput">Nombre Completo</label>
+            </div>
+            <br>
+            <div class="form-floating ">
+              <input type="email" class="form-control" id="correo" name="correo" placeholder="name@example.com">
+              <label for="floatingInput">Correo Electronico</label>
+            </div>
+            <input type="hidden" id="aptitudes"  name="aptitudes" maxlength="80">
+            <input type="hidden" id="intereses"  name="intereses" maxlength="80">
+            <br>
+            <div class="form-floating ">
+              <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+              <label for="floatingInput">Telefono</label>
+            </div>
+            <br>
+            <div class="form-floating ">
+              <input type="text" class="form-control" id="colegio" name="colegio" placeholder="Colegio">
+              <label for="floatingInput">Colegio</label>
+            </div>
+            <br>
+            <div>
+              <div>
+                  <select class="form-select"  id="carrera" name="carrera" onchange="cambiarotro(this)">
+                      <option value="" disabled selected="true" selected>¿Que carrera te gustaria estudiar?</option>
+                      <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                      <option value="Contaduría Pública">Contaduría Pública</option>
+                      <option value="Administración Agropecuaria">Administración Agropecuaria</option>
+                      <option value="Arquitectura">Arquitectura</option>
+                      <option value="Creación de contenidos digitales">Creación de contenidos digitales</option>
+                      <option value="Diseño y multimedia">Diseño y multimedia</option>
+                      <option value="Veterinaria">Veterinaria</option>
+                      <option value="Tecnología en Electricidad">Tecnología en Electricidad</option>
+                      <option value="Tecnología en Regencia de Farmacia">Tecnología en Regencia de Farmacia</option>
+                      <option value="Otra">Otra carrera</option>
+                  </select>
+              </div>
+              <div>
+                <br>
+                <input type="text" class="form-control" placeholder="¿Cual?"  name="otro" id="otro" maxlength="50" style="display:none" disabled>
+                <br>
+              </div>
+            </div>
+           </div>
+           <div class="container">   
+            <table align="center" width="90%" border="0" class="table table-striped">
+            <tr>
+              <td width="550" valign="top"><p><strong>Preguntas</strong></p></td>
+              <td width="57" valign="top"><p><strong>S&Iacute;</strong></p></td>
+              <td width="58" valign="top"><p><strong>NO</strong></p></td>  
+            </tr>
+              <tr  id="pregu1">
+              <td width="550" valign="top"><p>1. &iquest;Aceptar&iacute;as trabajar escribiendo art&iacute;culos en la    secci&oacute;n econ&oacute;mica de un diario?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta1' onclick="pregu1.style.display='none'; agregar_respuesta(1)">&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta1' onclick="pregu1.style.display='none'">&nbsp;</p></td>  </tr>
+            <tr  id="pregu2">
+              <td width="550" valign="top"><p>2.&iquest;Te ofrecer&iacute;as para organizar la despedida de soltero de    uno de tus amigos</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta2' onclick="pregu2.style.display='none'; agregar_respuesta(2)">&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta2' onclick="pregu2.style.display='none'">&nbsp;</p></td>  </tr>
+            <tr  id="pregu3">
+              <td width="550" valign="top"><p>3. &iquest;Te gustar&iacute;a dirigir un proyecto de urbanizaci&oacute;n en tu    ciudad?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta3' onclick="pregu3.style.display='none'; agregar_respuesta(3)">&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta3' onclick="pregu3.style.display='none'">&nbsp;</p></td>  </tr>
+            <tr  id="pregu4">
+              <td width="550" valign="top"><p>4. Ante una frustraci&oacute;n siempre opones un pensamiento    positivo</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta4' onclick="pregu4.style.display='none'; agregar_respuesta(4)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta4' onclick="pregu4.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu5">
+              <td width="550" valign="top"><p>5. &iquest;Te dedicar&iacute;as a socorrer a personas accidentadas o    atacadas por asaltantes?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta5' onclick="pregu5.style.display='none'; agregar_respuesta(5)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta5' onclick="pregu5.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu6">
+              <td width="550" valign="top"><p>6. &iquest;Cuando eras peque&ntilde;o te interesaba saber c&oacute;mo estaban    construidos los juguetes?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta6' onclick="pregu6.style.display='none'; agregar_respuesta(6)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta6' onclick="pregu6.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu7">
+              <td width="550" valign="top"><p>7. &iquest;Te interesan m&aacute;s los misterios de la naturaleza que    los secretos de la tecnolog&iacute;a?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta7' onclick="pregu7.style.display='none'; agregar_respuesta(7)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta7' onclick="pregu7.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu8">
+              <td width="550" valign="top"><p>8. &iquest;Escuchas atentamente los problemas que te plantean tus    amigos?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta8' onclick="pregu8.style.display='none'; agregar_respuesta(8)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta8' onclick="pregu8.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu9">
+              <td width="550" valign="top"><p>9. &iquest;Te ofrecer&iacute;as para explicar a tus compa&ntilde;eros un    determinado tema que ellos no entendieron?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta9' onclick="pregu9.style.display='none'; agregar_respuesta(9)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta9' onclick="pregu9.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu10">
+              <td width="550" valign="top"><p>10. &iquest;Eres exigente y cr&iacute;tico con tu equipo de trabajo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta10' onclick="pregu10.style.display='none'; agregar_respuesta(10)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta10' onclick="pregu10.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu11">
+              <td width="550" valign="top"><p>11. &iquest;Te atrae armar rompecabezas o puzzles?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta11' onclick="pregu11.style.display='none'; agregar_respuesta(11)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta11' onclick="pregu11.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu12">
+              <td width="550" valign="top"><p>12.&iquest;Puedes establecer la diferencia conceptual entre    macroeconom&iacute;a y microeconom&iacute;a?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta12' onclick="pregu12.style.display='none'; agregar_respuesta(12)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta12' onclick="pregu12.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu13">
+              <td width="550" valign="top"><p>13. &iquest;Usar uniforme te hace sentir distinto, importante?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta13' onclick="pregu13.style.display='none'; agregar_respuesta(13)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta13' onclick="pregu13.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu14">
+              <td width="550" valign="top"><p>14. &iquest;Participar&iacute;as como profesional en un espect&aacute;culo de    acrobacia a&eacute;rea?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta14' onclick="pregu14.style.display='none'; agregar_respuesta(14)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta14' onclick="pregu14.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu15">
+              <td width="550" valign="top"><p>15. &iquest;Organizas bien tu dinero?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta15' onclick="pregu15.style.display='none'; agregar_respuesta(15)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta15' onclick="pregu15.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu16">
+              <td width="550" valign="top"><p>16. &iquest;Convences f&aacute;cilmente a otras personas sobre la    validez de tus argumentos?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta16' onclick="pregu16.style.display='none'; agregar_respuesta(16)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta16' onclick="pregu16.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu17">
+              <td width="550" valign="top"><p>17. &iquest;Est&aacute;s informado sobre los nuevos descubrimientos que    se est&aacute;n realizando en la teor&iacute;a del Big-Bang?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta17' onclick="pregu17.style.display='none'; agregar_respuesta(17)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta17' onclick="pregu17.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu18">
+              <td width="550" valign="top"><p>18.&iquest;Ante una situaci&oacute;n de emergencia act&uacute;as r&aacute;pidamente?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta18' onclick="pregu18.style.display='none'; agregar_respuesta(18)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta18' onclick="pregu18.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu19">
+              <td valign="top"><p>19. &iquest;Cuando tienes que resolver alg&uacute;n problema matem&aacute;tico    perseveras hasta encontrar la soluci&oacute;n?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta19' onclick="pregu19.style.display='none'; agregar_respuesta(19)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta19' onclick="pregu19.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu20">
+              <td width="550" valign="top"><p>20. &iquest;Si te convocara tu club preferido para planificar,    organizar y dirigir un campo de deportes, aceptar&iacute;as?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta20' onclick="pregu20.style.display='none'; agregar_respuesta(20)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta20' onclick="pregu20.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu21">
+              <td width="550" valign="top"><p>21. &iquest;Eres el que pone un toque de alegr&iacute;a en las fiestas?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta21' onclick="pregu21.style.display='none'; agregar_respuesta(21)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta21' onclick="pregu21.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu22">
+              <td width="550" valign="top"><p>22. &iquest;Crees que los detalles son tan importantes como el    todo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta22' onclick="pregu22.style.display='none'; agregar_respuesta(22)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta22' onclick="pregu22.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu23">
+              <td width="550" valign="top"><p>23. &iquest;Te sentir&iacute;as a gusto trabajando en un &aacute;mbito    hospitalario?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta23' onclick="pregu23.style.display='none'; agregar_respuesta(23)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta23' onclick="pregu23.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu24">
+              <td width="550" valign="top"><p>24. &iquest;Te gustar&iacute;a participar para mantener el orden ante    grandes cat&aacute;strofes?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta24' onclick="pregu24.style.display='none'; agregar_respuesta(24)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta24' onclick="pregu24.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu25">
+              <td width="550" valign="top"><p>25. &iquest;Pasar&iacute;as varias horas leyendo alg&uacute;n libro de tu    inter&eacute;s?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta25' onclick="pregu25.style.display='none'; agregar_respuesta(25)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta25' onclick="pregu25.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu26">
+              <td width="550" valign="top"><p>26. &iquest;Planificas detalladamente tus trabajos antes de    empezar?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta26' onclick="pregu26.style.display='none'; agregar_respuesta(26)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta26' onclick="pregu26.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu27">
+              <td width="550" valign="top"><p>27. &iquest;Entablas una relaci&oacute;n casi personal con tu    computadora?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta27' onclick="pregu27.style.display='none'; agregar_respuesta(27)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta27' onclick="pregu27.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu28">
+              <td width="550" valign="top"><p>28.&iquest;Disfrutas modelando con arcilla?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta28' onclick="pregu28.style.display='none'; agregar_respuesta(28)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta28' onclick="pregu28.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu29">
+              <td width="550" valign="top"><p>29. &iquest;Ayudas habitualmente a los no videntes a cruzar la    calle?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta29' onclick="pregu29.style.display='none'; agregar_respuesta(29)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta29' onclick="pregu29.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu30">
+              <td width="550" valign="top"><p>30. &iquest;Consideras importante que desde la escuela se fomente    la actitud cr&iacute;tica?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta30' onclick="pregu30.style.display='none'; agregar_respuesta(30)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta30' onclick="pregu30.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu31">
+              <td width="550" valign="top"><p>31. &iquest;Aceptar&iacute;as que las mujeres formasen parte de las    fuerzas armadas bajo las mismas normas que los hombres?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta31' onclick="pregu31.style.display='none'; agregar_respuesta(31)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta31' onclick="pregu31.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu32">
+              <td width="550" valign="top"><p>32. &iquest;Te gustar&iacute;a estudiar las enfermedades a trav&eacute;s del    microscopio?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta32' onclick="pregu32.style.display='none'; agregar_respuesta(32)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta32' onclick="pregu32.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu33">
+              <td width="550" valign="top"><p>33. &iquest;Participar&iacute;as en una campa&ntilde;a sobre la prevenci&oacute;n del    VIH?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta33' onclick="pregu33.style.display='none'; agregar_respuesta(33)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta33' onclick="pregu33.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu34">
+              <td width="550" valign="top"><p>34.&iquest;Te interesan los temas relacionados al pasado y a la    evoluci&oacute;n del hombre?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta34' onclick="pregu34.style.display='none'; agregar_respuesta(34)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta34' onclick="pregu34.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu35">
+              <td width="550" valign="top"><p>35.&iquest;Te incluir&iacute;as en una investigaci&oacute;n sobre los    movimientos s&iacute;smicos?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta35' onclick="pregu35.style.display='none'; agregar_respuesta(35)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta35' onclick="pregu35.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu36">
+              <td width="550" valign="top"><p>36. &iquest;Dedicas alg&uacute;n d&iacute;a de la semana a realizar ejercicio?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta36' onclick="pregu36.style.display='none'; agregar_respuesta(36)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta36' onclick="pregu36.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu37">
+              <td width="550" valign="top"><p>37. &iquest;Te gusta la acci&oacute;n?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta37' onclick="pregu37.style.display='none'; agregar_respuesta(37)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta37' onclick="pregu37.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu38">
+              <td width="550" valign="top"><p>38. &iquest;Te gustar&iacute;a trabajar en la NASA?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta38' onclick="pregu38.style.display='none'; agregar_respuesta(38)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta38' onclick="pregu38.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu39">
+              <td width="550" valign="top"><p>39. &iquest;Te gusta m&aacute;s el trabajo manual que el intelectual?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta39' onclick="pregu39.style.display='none'; agregar_respuesta(39)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta39' onclick="pregu39.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu40">
+              <td width="550" valign="top"><p>40. &iquest;Estar&iacute;as dispuesto a renunciar al ocio por tu    trabajo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta40' onclick="pregu40.style.display='none'; agregar_respuesta(40)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta40' onclick="pregu40.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu41">
+              <td width="550" valign="top"><p>41. &iquest;Participar&iacute;as en una investigaci&oacute;n sobre la violencia    en el f&uacute;tbol?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta41' onclick="pregu41.style.display='none'; agregar_respuesta(41)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta41' onclick="pregu41.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu42">
+              <td width="550" valign="top"><p>42. &iquest;Te gustar&iacute;a ser becario en un laboratorio?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta42' onclick="pregu42.style.display='none'; agregar_respuesta(42)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta42' onclick="pregu42.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu43">
+              <td width="550" valign="top"><p>43. &iquest;Arriesgar&iacute;as tu vida para salvar la de alguien a    quien no conoces?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta43' onclick="pregu43.style.display='none'; agregar_respuesta(43)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta43' onclick="pregu43.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu44">
+              <td width="550" valign="top"><p>44. &iquest;Te gustar&iacute;a hacer un curso de socorrismo y primeros    auxilios?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta44' onclick="pregu44.style.display='none'; agregar_respuesta(44)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta44' onclick="pregu44.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu45">
+              <td width="550" valign="top"><p>45. Cuando no consigues algo, &iquest;eres capaz de volver a    empezar hasta que lo consigues?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta45' onclick="pregu45.style.display='none'; agregar_respuesta(45)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta45' onclick="pregu45.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu46">
+              <td width="550" valign="top"><p>46. &iquest;Te planificas bien tus horarios?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta46' onclick="pregu46.style.display='none'; agregar_respuesta(46)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta46' onclick="pregu46.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu47">
+              <td width="550" valign="top"><p>47. &iquest;Te gustar&iacute;a aprender a fabricar y reparar m&aacute;quinas?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta47' onclick="pregu47.style.display='none'; agregar_respuesta(47)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta47' onclick="pregu47.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu48">
+              <td width="550" valign="top"><p>48. &iquest;Te importar&iacute;a viajar y alejarte de tu familia por    motivos de trabajo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta48' onclick="pregu48.style.display='none'; agregar_respuesta(48)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta48' onclick="pregu48.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu49">
+              <td width="550" valign="top"><p>49. &iquest;Te importar&iacute;a vivir y trabajar en una granja?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta49' onclick="pregu49.style.display='none'; agregar_respuesta(49)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta49' onclick="pregu49.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu50">
+              <td width="550" valign="top"><p>50. &iquest;Para ti es importante compartir tus ideas y que sean    tenidas en cuenta?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta50' onclick="pregu50.style.display='none'; agregar_respuesta(50)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta50' onclick="pregu50.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu51">
+              <td width="550" valign="top"><p>51.&iquest;Te resulta f&aacute;cil coordinar un grupo de trabajo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta51' onclick="pregu51.style.display='none'; agregar_respuesta(51)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta51' onclick="pregu51.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu52">
+              <td width="550" valign="top"><p>52. &iquest;Te gustar&iacute;a estudiar Biolog&iacute;a?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta52' onclick="pregu52.style.display='none'; agregar_respuesta(52)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta52' onclick="pregu52.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu53">
+              <td width="550" valign="top"><p>53. &iquest;Te sentir&iacute;as bien desempe&ntilde;ando un puesto de director    comercial?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta53' onclick="pregu53.style.display='none'; agregar_respuesta(53)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta53' onclick="pregu53.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu54">
+              <td width="550" valign="top"><p>54. &iquest;Te gustar&iacute;a participar en un proyecto de desarrollo    de tu localidad?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta54' onclick="pregu54.style.display='none'; agregar_respuesta(54)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta54' onclick="pregu54.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu55">
+              <td width="550" valign="top"><p>55. &iquest;Tienes inter&eacute;s por conocer las causas de los    fen&oacute;menos, aunque no est&eacute;n relacionados con tu vida?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta55' onclick="pregu55.style.display='none'; agregar_respuesta(55)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta55' onclick="pregu55.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu56">
+              <td width="550" valign="top"><p>56. &iquest;Alguna vez has encontrado alg&uacute;n fil&oacute;sofo o escritor    que expresara con antelaci&oacute;n lo que t&uacute; hab&iacute;as pensado?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta56' onclick="pregu56.style.display='none'; agregar_respuesta(56)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta56' onclick="pregu56.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu57">
+              <td width="550" valign="top"><p>57. &iquest;Te gustar&iacute;a que te regalaran un instrumento musical?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta57' onclick="pregu57.style.display='none'; agregar_respuesta(57)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta57' onclick="pregu57.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu58">
+              <td width="550" valign="top"><p>58. &iquest;Aceptar&iacute;as colaborar con el cumplimiento de las    normas en lugares p&uacute;blicos?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta58' onclick="pregu58.style.display='none'; agregar_respuesta(58)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta58' onclick="pregu58.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu59">
+              <td width="550" valign="top"><p>59. &iquest;Crees que tus ideas son importantes y haces lo    posible para ponerlas en pr&aacute;ctica?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta59' onclick="pregu59.style.display='none'; agregar_respuesta(59)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta59' onclick="pregu59.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu60">
+              <td width="550" valign="top"><p>60. &iquest;Cu&aacute;ndo se rompe un electrodom&eacute;stico, intentas    repararlo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta60' onclick="pregu60.style.display='none'; agregar_respuesta(60)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta60' onclick="pregu60.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu61">
+              <td width="550" valign="top"><p>61. &iquest;Formar&iacute;as parte de un grupo ecologista?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta61' onclick="pregu61.style.display='none'; agregar_respuesta(61)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta61' onclick="pregu61.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu62">
+              <td width="550" valign="top"><p>62. &iquest;Te gustan las revistas cient&iacute;ficas relacionadas con    la salud?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta62' onclick="pregu62.style.display='none'; agregar_respuesta(62)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta62' onclick="pregu62.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu63">
+              <td width="550" valign="top"><p>63. &iquest;Te parece importante preservar las ra&iacute;ces culturales    de tu pa&iacute;s?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta63' onclick="pregu63.style.display='none'; agregar_respuesta(63)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta63' onclick="pregu63.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu64">
+              <td width="550" valign="top"><p>64. &iquest;Te gustar&iacute;a trabajar por una distribuci&oacute;n m&aacute;s justa    de la riqueza?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta64' onclick="pregu64.style.display='none'; agregar_respuesta(64)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta64' onclick="pregu64.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu65">
+              <td width="550" valign="top"><p>65. &iquest;Te gustar&iacute;a realizar tareas de mantenimiento en la    tripulaci&oacute;n de un barco?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta65' onclick="pregu65.style.display='none'; agregar_respuesta(65)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta65' onclick="pregu65.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu66">
+              <td width="550" valign="top"><p>66. &iquest;Est&aacute;s a favor de la compra de armamento en tu pa&iacute;s?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta66' onclick="pregu66.style.display='none'; agregar_respuesta(66)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta66' onclick="pregu66.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu67">
+              <td width="550" valign="top"><p>67. &iquest;La libertad y la justicia son valores fundamentales    en tu vida?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta67' onclick="pregu67.style.display='none'; agregar_respuesta(67)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta67' onclick="pregu67.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu68">
+              <td width="550" valign="top"><p>68. &iquest;Te gustar&iacute;a trabajar como becario en una industria de    control de calidad de la alimentaci&oacute;n?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta68' onclick="pregu68.style.display='none'; agregar_respuesta(68)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta68' onclick="pregu68.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu69">
+              <td width="550" valign="top"><p>69. &iquest;Consideras que la salud p&uacute;blica debe ser prioritaria    y gratuita?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta69' onclick="pregu69.style.display='none'; agregar_respuesta(69)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta69' onclick="pregu69.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu70">
+              <td width="550" valign="top"><p>70. &iquest;Te interesar&iacute;a investigar sobre alguna nueva vacuna?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta70' onclick="pregu70.style.display='none'; agregar_respuesta(70)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta70' onclick="pregu70.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu71">
+              <td width="550" valign="top"><p>71. Si tienes que trabajar en equipo &iquest;prefieres el rol de    coordinador?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta71' onclick="pregu71.style.display='none'; agregar_respuesta(71)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta71' onclick="pregu71.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu72">
+              <td width="550" valign="top"><p>72. En una discusi&oacute;n entre amigos &iquest;sueles hacer de    mediador?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta72' onclick="pregu72.style.display='none'; agregar_respuesta(72)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta72' onclick="pregu72.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu73">
+              <td width="550" valign="top"><p>73. &iquest;Est&aacute;s de acuerdo con la formaci&oacute;n de un cuerpo de    soldados profesionales?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta73' onclick="pregu73.style.display='none'; agregar_respuesta(73)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta73' onclick="pregu73.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu74">
+              <td width="550" valign="top"><p>74. &iquest;Luchar&iacute;as por una causa justa hasta las &uacute;ltimas    consecuencias?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta74' onclick="pregu74.style.display='none'; agregar_respuesta(74)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta74' onclick="pregu74.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu75">
+              <td width="550" valign="top"><p>75. &iquest;Te gustar&iacute;a investigar cient&iacute;ficamente sobre cultivos    agr&iacute;colas?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta75' onclick="pregu75.style.display='none'; agregar_respuesta(75)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta75' onclick="pregu75.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu76">
+              <td width="550" valign="top"><p>76. &iquest;Ser&iacute;as capaz de transformar una prenda pasada de    moda, ante un acontecimiento imprevisto?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta76' onclick="pregu76.style.display='none'; agregar_respuesta(76)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta76' onclick="pregu76.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu77">
+              <td width="550" valign="top"><p>77. &iquest;Visitar&iacute;as un observatorio astron&oacute;mico para conocer    c&oacute;mo funciona?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta77' onclick="pregu77.style.display='none'; agregar_respuesta(77)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta77' onclick="pregu77.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu78">
+              <td width="550" valign="top"><p>78. &iquest;Te gustar&iacute;a dirigir el &aacute;rea de importaci&oacute;n y    exportaci&oacute;n de una empresa?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta78' onclick="pregu78.style.display='none'; agregar_respuesta(78)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta78' onclick="pregu78.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu79">
+              <td width="550" valign="top"><p>79. &iquest;Te da verg&uuml;enza entrar en un lugar nuevo con gente    desconocida?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta79' onclick="pregu79.style.display='none'; agregar_respuesta(79)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta79' onclick="pregu79.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu80">
+              <td width="550" valign="top"><p>80. &iquest;Te gustar&iacute;a trabajar con ni&ntilde;os?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta80' onclick="pregu80.style.display='none'; agregar_respuesta(80)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta80' onclick="pregu80.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu81">
+              <td width="550" valign="top"><p>81. &iquest;Podr&iacute;as dise&ntilde;ar un afiche en una campa&ntilde;a contra el    SIDA?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta81' onclick="pregu81.style.display='none'; agregar_respuesta(81)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta81' onclick="pregu81.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu82">
+              <td width="550" valign="top"><p>82. &iquest;Podr&iacute;as dirigir un grupo de teatro independiente?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta82' onclick="pregu82.style.display='none'; agregar_respuesta(82)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta82' onclick="pregu82.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu83">
+              <td width="550" valign="top"><p>83. &iquest;Enviar&iacute;as tu curr&iacute;culum a una empresa automotriz como    gerente del &aacute;rea de producci&oacute;n?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta83' onclick="pregu83.style.display='none'; agregar_respuesta(83)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta83' onclick="pregu83.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu84">
+              <td width="550" valign="top"><p>84. &iquest;Participar&iacute;as en un grupo de defensa internacional de    una fuerza armada?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta84' onclick="pregu84.style.display='none'; agregar_respuesta(84)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta84' onclick="pregu84.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu85">
+              <td width="550" valign="top"><p>85. &iquest;Te pagar&iacute;as un curso trabajando en una empresa de    auditor&iacute;a?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta85' onclick="pregu85.style.display='none'; agregar_respuesta(85)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta85' onclick="pregu85.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu86">
+              <td width="550" valign="top"><p>86. &iquest;Eres de los que defiendes causas perdidas?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta86' onclick="pregu86.style.display='none'; agregar_respuesta(86)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta86' onclick="pregu86.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu87">
+              <td width="550" valign="top"><p>87. &iquest;Participar&iacute;as con tu ayuda ante una campa&ntilde;a    epid&eacute;mica?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta87' onclick="pregu87.style.display='none'; agregar_respuesta(87)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta87' onclick="pregu87.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu88">
+              <td width="550" valign="top"><p>88. &iquest;Sabes que es el ADN y ARN?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta88' onclick="pregu88.style.display='none'; agregar_respuesta(88)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta88' onclick="pregu88.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu89">
+              <td width="550" valign="top"><p>89. &iquest;Elegir&iacute;as un trabajo cuya principal herramienta fuera    hablar un idioma extranjero?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta89' onclick="pregu89.style.display='none'; agregar_respuesta(89)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta89' onclick="pregu89.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu90">
+              <td width="550" valign="top"><p>90. &iquest;Trabajar con objetos te resulta m&aacute;s gratificante qu&eacute;    trabajar con personas?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta90' onclick="pregu90.style.display='none'; agregar_respuesta(90)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta90' onclick="pregu90.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu91">
+              <td width="550" valign="top"><p>91. &iquest;Te resultar&iacute;a gratificante ser asesor contable en una    empresa de reconocido prestigio?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta91' onclick="pregu91.style.display='none'; agregar_respuesta(91)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta91' onclick="pregu91.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu92">
+              <td width="550" valign="top"><p>92. &iquest;Te ofrecer&iacute;as para cuidar a un enfermo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta92' onclick="pregu92.style.display='none'; agregar_respuesta(92)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta92' onclick="pregu92.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu93">
+              <td width="550" valign="top"><p>93. &iquest;Te gustar&iacute;a investigar sobre los agujeros negros?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta93' onclick="pregu93.style.display='none'; agregar_respuesta(93)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta93' onclick="pregu93.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu94">
+              <td width="550" valign="top"><p>94. &iquest;Crees que es mejor trabajar individualmente que en    equipo?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta94' onclick="pregu94.style.display='none'; agregar_respuesta(94)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta94' onclick="pregu94.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu95">
+              <td width="550" valign="top"><p>95. Dedicar&iacute;as parte de tu tiempo a trabajar en una ONG</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta95' onclick="pregu95.style.display='none'; agregar_respuesta(95)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta95' onclick="pregu95.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu96">
+              <td width="550" valign="top"><p>96. Cuando eliges ropa o decoras tu casa, &iquest;tienes en    cuenta los colores, los estilos,..?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta96' onclick="pregu96.style.display='none'; agregar_respuesta(96)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta96' onclick="pregu96.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu97">
+              <td width="550" valign="top"><p>97. &iquest;Te gustar&iacute;a dirigir una obra hidroel&eacute;ctrica?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta97' onclick="pregu97.style.display='none'; agregar_respuesta(97)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta97' onclick="pregu97.style.display='none'" >&nbsp;</p></td>  </tr>
+            <tr  id="pregu98">
+              <td width="550" valign="top"><p>98. &iquest;Sabes qu&eacute; es el PBI?</p></td>
+              <td width="57" valign="top"><p><input type=radio name='pregunta98' onclick="pregu98.style.display='none'; agregar_respuesta(98)" >&nbsp;</p></td>
+              <td width="58" valign="top"><p><input type=radio name='pregunta98' onclick="pregu98.style.display='none'" >&nbsp;</p></td>  </tr>
+              </table>
+                  <div class="row p-2">
+                    <input type="submit" class="btn btn-success" name="submit" value="Enviar">
+                  </div> 
+            </form>
+           
+
+       <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+              <img class="bi" width="35" height="35" src="https://www.ceim.edu.co/wp-content/uploads/2015/03/cotecnova.png">
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Cotecnova</span>
+          </div>
+        </footer>
+      </div>
+       
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</body>
+</html>
